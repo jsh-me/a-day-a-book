@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    잠시 임시방편 ... -->
+    <color name="colorPrimary">#A69C90</color>
+    <color name="colorPrimaryDark">#8DE4E7D9</color>
+    <color name="colorAccent">#A69C90</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+
+    <color name="main">#414B55</color>
+
+    <color name="brown1">#8DE4E7D9</color>
+    <color name="brown2">#A59C90</color>
+    <color name="brown3">#A69C90</color>
+
+    <color name="grey1">#80C2C2C2</color>
+</resources>
