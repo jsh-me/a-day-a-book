@@ -1,4 +1,4 @@
-package com.aday.abook
+package com.aday.abook.feature.memo
 
 import androidx.fragment.app.Fragment
 

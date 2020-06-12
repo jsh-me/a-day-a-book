@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="mainViewModel"
+            type="com.aday.abook.feature.main.MainViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brown1"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:background="@color/brown1">
 
     <ImageButton
         android:id="@+id/backButton"
@@ -153,3 +160,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
