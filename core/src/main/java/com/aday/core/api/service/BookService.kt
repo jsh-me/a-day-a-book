@@ -1,4 +1,4 @@
-package com.aday.core.api
+package com.aday.core.api.service
 
 import com.aday.model.response.SearchBookResponse
 import io.reactivex.Single
