@@ -22,6 +22,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/ic_close"
+        android:onClick="@{() -> memoViewModel.close()}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

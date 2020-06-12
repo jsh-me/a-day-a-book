@@ -3,6 +3,7 @@ package com.aday.abook.feature.memo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.aday.abook.BaseApplication
@@ -21,6 +22,7 @@ class BookMemoActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         injectComponent()
         setupDatabinding()
+        observeViewModel()
     }
 
     private fun injectComponent(){
@@ -35,5 +37,22 @@ class BookMemoActivity: AppCompatActivity(){
         mBinding =  DataBindingUtil.setContentView(this, R.layout.activity_book_memo)
         mViewModel = ViewModelProviders.of(this, viewModelFactory)[BookMemoViewModel::class.java]
         mBinding.memoViewModel = mViewModel
+    }
+
+    private fun observeViewModel(){
+        mViewModel.mCloseButtonClicked.observe(this, Observer{
+            goBackMain()
+        })
+    }
+
+    private fun goBackMain(){
+        finish()
+        overridePendingTransition(R.anim.fade_in, R.anim.slide_down)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.fade_in, R.anim.slide_down)
+
     }
 }
