@@ -7,12 +7,12 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion targetSdkVersion
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.aday.abook"
-        minSdkVersion 23
-        targetSdkVersion 29
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -27,10 +27,18 @@ android {
     dataBinding {
         enabled = true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(path: ':core')
+    implementation project(path: ':model')
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.core:core-ktx:1.0.2'
@@ -73,7 +81,5 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'android.arch.work:work-runtime-ktx:1.0.1'
-    implementation project(path: ':core')
-    implementation project(path: ':model')
 
 }
