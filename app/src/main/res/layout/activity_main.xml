@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="mainViewModel"
+            type="com.aday.abook.feature.main.MainViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brown1"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:background="@color/brown1">
 
     <ImageButton
         android:id="@+id/backButton"
@@ -51,6 +58,7 @@
         android:layout_width="170dp"
         android:layout_height="250dp"
         android:background="@drawable/ic_green_addbook"
+        android:onClick="@{() -> mainViewModel.addBookClicked()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -63,6 +71,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:foreground="?android:attr/selectableItemBackground"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toTopOf="@+id/imageButton"
@@ -73,6 +82,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:foreground="?android:attr/selectableItemBackground"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton"
         app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintTop_toTopOf="@+id/imageButton"
@@ -137,19 +147,22 @@
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/ic_add_button"
+        android:onClick="@{() -> mainViewModel.addWordClicked()}"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
         app:layout_constraintStart_toEndOf="@+id/imageButton2"
         app:layout_constraintTop_toTopOf="@+id/imageButton2" />
 
     <ImageButton
         android:id="@+id/detailButton"
-        android:layout_width="40dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/ic_memo_button_brown"
+        android:onClick="@{() -> mainViewModel.detailClicked()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
