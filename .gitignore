@@ -147,4 +147,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+./core/src/main/java/com/aday/core/consts/
+
+
 # End of https://www.toptal.com/developers/gitignore/api/android,kotlin,macos

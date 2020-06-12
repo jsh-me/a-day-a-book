@@ -27,6 +27,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':model')
+    
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.3.0'
@@ -68,5 +70,5 @@ dependencies {
     // 3rd-party https://github.com/FasterXML/jackson https://github.com/JakeWharton/timber
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
     implementation 'com.jakewharton.timber:timber:4.7.1'
-    implementation project(path: ':model')
+
 }
