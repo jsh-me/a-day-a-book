@@ -23,6 +23,8 @@
         </activity>
 
         <activity android:name=".feature.search.BookSearchActivity"/>
+        <activity android:name=".feature.memo.BookMemoActivity"
+            android:theme="@style/Theme.Transparent" />
     </application>
 
 </manifest>

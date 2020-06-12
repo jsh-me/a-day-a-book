@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="30dp"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="memoViewModel"
+            type="com.aday.abook.feature.memo.BookMemoViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_marginTop="150dp"
     android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,11 +26,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
         android:background="@drawable/ic_memo_button_white"
         android:layout_margin="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/closeContent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
