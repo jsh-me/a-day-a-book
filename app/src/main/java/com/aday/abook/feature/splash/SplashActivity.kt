@@ -1,7 +1,8 @@
-package com.example.mysemo
+package com.aday.abook.feature.splash
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.aday.abook.R
 
 class SplashActivity : AppCompatActivity() {
 
