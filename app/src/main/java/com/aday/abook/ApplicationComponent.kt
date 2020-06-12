@@ -3,6 +3,7 @@ package com.aday.abook
 import android.app.Application
 import android.app.IntentService
 import com.aday.abook.feature.main.MainComponent
+import com.aday.abook.mvvm.ViewModelModule
 import com.aday.core.dagger.module.APIModule
 import com.aday.core.dagger.module.ApplicationModule
 import com.aday.core.dagger.module.HttpClientModule
@@ -14,7 +15,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [ApplicationModule::class,
         HttpClientModule::class,
-        APIModule::class
+        APIModule::class,
+        ViewModelModule::class
         ])
 
 interface ApplicationComponent {

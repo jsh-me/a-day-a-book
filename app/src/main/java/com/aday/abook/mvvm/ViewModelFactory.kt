@@ -3,8 +3,6 @@ package com.aday.abook.mvvm
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dagger.MapKey
-import dagger.Module
-import dagger.multibindings.IntoMap
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
@@ -25,6 +23,5 @@ class ViewModelFactory @Inject constructor(
 
 @Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_SETTER, AnnotationTarget.PROPERTY_GETTER)
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-
 @MapKey
-internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
+annotation class ViewModelKey(val value: KClass<out ViewModel>)

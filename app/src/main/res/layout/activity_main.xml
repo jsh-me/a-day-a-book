@@ -154,8 +154,8 @@
 
     <ImageButton
         android:id="@+id/detailButton"
-        android:layout_width="40dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/ic_memo_button_brown"
         android:onClick="@{() -> mainViewModel.detailClicked()}"

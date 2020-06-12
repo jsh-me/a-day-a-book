@@ -1,13 +1,16 @@
 package com.aday.abook.feature.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.aday.abook.BaseApplication
 import com.aday.abook.R
 import com.aday.abook.databinding.ActivityMainBinding
+import com.aday.abook.feature.search.BookSearchActivity
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(){
@@ -41,6 +44,18 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun observeViewModel(){
+        mViewModel.mAddBookClicked.observe(this, Observer {
+            gotoBookSearch()
+        })
+        mViewModel.mDetailClicked.observe(this, Observer {
+            gotoMemo()
+        })
+    }
 
+    private fun gotoBookSearch(){
+        val intent = Intent(this, BookSearchActivity::class.java)
+        startActivityForResult(intent, 1000)
+    }
+    private fun gotoMemo(){
     }
 }

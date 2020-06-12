@@ -2,11 +2,11 @@ package com.aday.abook.feature.memo
 
 import androidx.fragment.app.Fragment
 
-class BookContentFragment: Fragment(){
+class BookMemoFragment: Fragment(){
 
     companion object{
         @JvmStatic
-        fun newInstance() = BookContentFragment
+        fun newInstance() = BookMemoFragment
     }
 
 //    override fun onAttach(context: Context?) {
