@@ -24,11 +24,16 @@ class MainActivity : AppCompatActivity(){
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mViewModel: MainViewModel
 
+    private var selectedDate: String= ""
+    private var mBookCoverImage: String= ""
+    private var mBookName: String= ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         injectComponent()
         setupDatabinding()
+        initView()
         observeViewModel()
     }
 
@@ -46,12 +51,19 @@ class MainActivity : AppCompatActivity(){
         mBinding.mainViewModel = mViewModel
     }
 
+    private fun initView(){
+        selectedDate = intent.getStringExtra(Consts.CALENDAR_DATE)?:""
+    }
+
     private fun observeViewModel(){
         mViewModel.mAddBookClicked.observe(this, Observer {
             gotoBookSearch()
         })
         mViewModel.mDetailClicked.observe(this, Observer {
             gotoMemo()
+        })
+        mViewModel.mSaveButtonClicked.observe(this, Observer{
+            mViewModel.saveData(selectedDate, mBookCoverImage, mBookName)
         })
     }
 
@@ -69,8 +81,11 @@ class MainActivity : AppCompatActivity(){
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode==1000 && resultCode==1000){
-            bookCoverImage.loadUrl(data?.getStringExtra(Consts.BOOK_IMAGE))
-            bookName.text = data?.getStringExtra(Consts.BOOK_NAME)
+            mBookCoverImage = data?.getStringExtra(Consts.BOOK_IMAGE).toString()
+            mBookName = data?.getStringExtra(Consts.BOOK_NAME).toString()
+            bookCoverImage.loadUrl(mBookCoverImage)
+            bookName.text = mBookName
+            mViewModel.setSaveButton(true)
         }
     }
 }
