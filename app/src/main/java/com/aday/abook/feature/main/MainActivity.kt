@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.aday.abook.BaseApplication
 import com.aday.abook.R
 import com.aday.abook.databinding.ActivityMainBinding
+import com.aday.abook.feature.memo.BookMemoActivity
 import com.aday.abook.feature.search.BookSearchActivity
 import javax.inject.Inject
 
@@ -22,7 +23,6 @@ class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         injectComponent()
         setupDatabinding()
@@ -57,5 +57,8 @@ class MainActivity : AppCompatActivity(){
         startActivityForResult(intent, 1000)
     }
     private fun gotoMemo(){
+        val intent = Intent(this, BookMemoActivity::class.java)
+        startActivityForResult(intent, 2000)
+        overridePendingTransition(R.anim.slide_up, R.anim.fade_out)
     }
 }
