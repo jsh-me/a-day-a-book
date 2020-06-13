@@ -5,4 +5,6 @@
     <string name="author">저자</string>
     <string name="publisher">출판사</string>
     <string name="no_search_result">검색 결과가 없습니다.</string>
+
+    <string name="save">저장</string>
 </resources>

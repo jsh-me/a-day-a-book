@@ -12,6 +12,9 @@ import com.aday.abook.R
 import com.aday.abook.databinding.ActivityMainBinding
 import com.aday.abook.feature.memo.BookMemoActivity
 import com.aday.abook.feature.search.BookSearchActivity
+import com.aday.core.consts.Consts
+import com.aday.core.utils.loadUrl
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(){
@@ -60,5 +63,14 @@ class MainActivity : AppCompatActivity(){
         val intent = Intent(this, BookMemoActivity::class.java)
         startActivityForResult(intent, 2000)
         overridePendingTransition(R.anim.slide_up, R.anim.fade_out)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode==1000 && resultCode==1000){
+            bookCoverImage.loadUrl(data?.getStringExtra(Consts.BOOK_IMAGE))
+            bookName.text = data?.getStringExtra(Consts.BOOK_NAME)
+        }
     }
 }
