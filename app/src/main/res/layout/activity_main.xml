@@ -23,6 +23,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:textColor="@color/main"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/backButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backButton" />
+
     <ImageView
         android:id="@+id/thumb"
         android:layout_width="15dp"
@@ -37,7 +51,7 @@
         android:layout_height="15dp"
         android:layout_margin="30dp"
         android:background="@drawable/ic_icon_progress_bar"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toTopOf="@+id/bookCoverImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backButton"
@@ -48,13 +62,13 @@
         android:layout_height="wrap_content"
         android:text="1 / 5 번째 책"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toTopOf="@+id/bookCoverImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/bookCoverImage"
         android:layout_width="170dp"
         android:layout_height="250dp"
         android:background="@drawable/ic_green_addbook"
@@ -72,9 +86,9 @@
         android:layout_height="50dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toBottomOf="@+id/bookCoverImage"
+        app:layout_constraintStart_toEndOf="@+id/bookCoverImage"
+        app:layout_constraintTop_toTopOf="@+id/bookCoverImage"
         android:background="@drawable/ic_next_icon" />
 
     <ImageButton
@@ -83,9 +97,9 @@
         android:layout_height="50dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toBottomOf="@+id/bookCoverImage"
+        app:layout_constraintEnd_toStartOf="@+id/bookCoverImage"
+        app:layout_constraintTop_toTopOf="@+id/bookCoverImage"
         android:background="@drawable/ic_previous_icon" />
 
     <TextView
@@ -97,7 +111,7 @@
         android:textColor="@color/main"
         app:layout_constraintEnd_toStartOf="@+id/nextButton"
         app:layout_constraintStart_toEndOf="@+id/previousButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/bookCoverImage"
         android:text="어린왕자" />
 
     <RatingBar

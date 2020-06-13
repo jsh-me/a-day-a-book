@@ -4,6 +4,10 @@
         <variable
             name="searchViewModel"
             type="com.aday.abook.feature.search.BookSearchViewModel" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
     </data>
     
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,7 +66,8 @@
         android:id="@+id/noSearchResultText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{searchViewModel.mSearchText}"
+        android:text="@string/no_search_result"
+        android:visibility="@{searchViewModel.searchNoResult? view.VISIBLE : view.INVISIBLE }"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

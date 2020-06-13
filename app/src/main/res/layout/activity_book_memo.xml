@@ -18,7 +18,7 @@
     android:background="@drawable/border_round_brown3">
 
     <Button
-        android:id="@+id/closeContent"
+        android:id="@+id/closeButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/ic_close"
@@ -27,12 +27,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="30dp"
         android:layout_height="40dp"
-        android:background="@drawable/ic_memo_button_white"
         android:layout_margin="10dp"
+        android:background="@drawable/ic_memo_button_white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/closeContent" />
+        app:layout_constraintTop_toBottomOf="@+id/closeButton" />
+
+    <EditText
+        android:id="@+id/memoContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@null"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:lineSpacingExtra="8dp"
+        android:scrollHorizontally="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

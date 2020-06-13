@@ -11,7 +11,8 @@ import com.aday.core.utils.loadUrl
 import com.aday.model.entity.BookInfo
 
 class BookSearchAdapter(
-    private val bookList: ArrayList<BookInfo>
+    private val bookList: ArrayList<BookInfo>,
+    private val click: (BookInfo) -> Unit
 ): RecyclerView.Adapter<BookSearchAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,19 +22,20 @@ class BookSearchAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(bookList[position])
+        holder.itemView.setOnClickListener { click(bookList[position]) }
     }
 
     override fun getItemCount(): Int = bookList.size
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         private val bookName = itemView.findViewById<TextView>(R.id.bookNameResult)
-        private val bookAuther = itemView.findViewById<TextView>(R.id.autherNameResult)
+        private val bookAuthor = itemView.findViewById<TextView>(R.id.authorNameResult)
         private val bookPublisher = itemView.findViewById<TextView>(R.id.publisherNameResult)
         private val bookImage = itemView.findViewById<ImageView>(R.id.bookImage)
 
         fun bind(bookList: BookInfo){
             bookName.text = bookList.title
-            bookAuther.text = bookList.author
+            bookAuthor.text = bookList.author
             bookPublisher.text = bookList.publisher
             bookImage.loadUrl(bookList.image)
         }

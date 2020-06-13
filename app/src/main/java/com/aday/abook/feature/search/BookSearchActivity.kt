@@ -1,5 +1,6 @@
 package com.aday.abook.feature.search
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aday.abook.BaseApplication
 import com.aday.abook.R
 import com.aday.abook.databinding.ActivitySearchBookListBinding
+import com.aday.core.consts.Consts
+import com.aday.model.entity.BookInfo
 import kotlinx.android.synthetic.main.activity_search_book_list.*
 import javax.inject.Inject
 
@@ -56,7 +59,17 @@ class BookSearchActivity : AppCompatActivity(){
         bookResultRecycler.adapter?.notifyDataSetChanged()
         bookResultRecycler.apply{
             layoutManager = LinearLayoutManager(this@BookSearchActivity)
-            adapter = BookSearchAdapter(mViewModel.getBookList())
+            adapter = BookSearchAdapter(mViewModel.getBookList(), click())
         }
+    }
+
+    private fun click() = { info :BookInfo ->
+        val intent = Intent()
+        intent.apply{
+            putExtra(Consts.BOOK_IMAGE, info.image)
+            putExtra(Consts.BOOK_NAME, info.title)
+        }
+        setResult(1000, intent)
+        finish()
     }
 }

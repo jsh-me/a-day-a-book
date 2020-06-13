@@ -93,4 +93,8 @@ dependencies {
     implementation 'android.arch.work:work-runtime-ktx:1.0.1'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
+    //calendar
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
+
+
 }
