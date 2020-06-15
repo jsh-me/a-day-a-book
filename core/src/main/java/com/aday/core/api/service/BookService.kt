@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface BookService {
-    @GET("search/book.json")
+    @GET("search/book")
     fun getSearchBook(@Query("query") query: String) : Single<SearchBookResponse>
 }

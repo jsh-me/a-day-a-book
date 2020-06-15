@@ -20,12 +20,10 @@ class HttpClientModule {
         val builder = OkHttpClient.Builder()
         builder.addNetworkInterceptor(StethoInterceptor())
             .addInterceptor { chain ->
-                val clientId = Consts.CLIENT_ID
-                val clientSecret = Consts.CLIENT_SECRET
+                val auth = Consts.auth
                var request = chain.request()
                    .newBuilder()
-                   .addHeader("X-Naver-Client-Id", clientId)
-                   .addHeader("X-Naver-Client-Secret", clientSecret)
+                   .addHeader("Authorization", auth)
                    .build()
 
                 chain.proceed(request)
