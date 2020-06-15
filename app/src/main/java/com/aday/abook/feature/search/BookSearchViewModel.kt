@@ -26,11 +26,13 @@ class BookSearchViewModel @Inject constructor(application: Application,
        // val encodeText = URLEncoder.encode(mSearchText.value!!, "UTF-8")
         getSearchBookUseCase.getSearchBook(mSearchText.value!!)
             .subscribe({
-                if(it.items.isNotEmpty()) {
-                    it.items.map { book ->
-                    mBookListInfo.add(BookInfo(book.title.removeHttpTag(),
-                            book.author.removeHttpTag(), book.publisher.removeHttpTag(), book.image))
+                if(it.documents.isNotEmpty()) {
+                    it.documents.map { book ->
+
+                    mBookListInfo.add(BookInfo(book.authors, book.contents,
+                            book.publisher.removeHttpTag(), book.title.removeHttpTag(), book.thumbnail))
                     }
+
                     searchNoResult.set(false)
                     mBookListLoadFinished.call()
                 }

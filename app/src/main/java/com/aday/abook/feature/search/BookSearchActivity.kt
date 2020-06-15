@@ -81,7 +81,7 @@ class BookSearchActivity : AppCompatActivity(){
     private fun click() = { info :BookInfo ->
         val intent = Intent()
         intent.apply{
-            putExtra(Consts.BOOK_IMAGE, info.image)
+            putExtra(Consts.BOOK_IMAGE, info.thumbnail)
             putExtra(Consts.BOOK_NAME, info.title)
         }
         setResult(1000, intent)

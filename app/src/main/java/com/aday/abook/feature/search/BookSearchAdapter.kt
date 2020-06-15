@@ -35,9 +35,13 @@ class BookSearchAdapter(
 
         fun bind(bookList: BookInfo){
             bookName.text = bookList.title
-            bookAuthor.text = bookList.author
+            var authors = ""
+            for(i in bookList.authors.indices){
+                authors +=  bookList.authors[i] + " "
+            }
+            bookAuthor.text = authors
             bookPublisher.text = bookList.publisher
-            bookImage.loadUrl(bookList.image)
+            bookImage.loadUrl(bookList.thumbnail)
         }
     }
 }

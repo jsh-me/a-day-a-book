@@ -100,6 +100,7 @@ class MainActivity : AppCompatActivity(){
             mBookCoverImage = data?.getStringExtra(Consts.BOOK_IMAGE).toString()
             mBookName = data?.getStringExtra(Consts.BOOK_NAME).toString()
             mBinding.bookCoverImage.loadUrl(mBookCoverImage)
+            mBinding.bookCoverImage.background = resources.getDrawable(R.drawable.image_shadow, null)
             mBinding.bookName.text = mBookName
             mViewModel.setSaveButton(true)
         }
