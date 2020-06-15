@@ -3,6 +3,7 @@ package com.aday.abook
 import android.app.Application
 import android.app.IntentService
 import androidx.room.Room
+import com.aday.abook.feature.calendar.CalendarComponent
 import com.aday.abook.feature.main.MainComponent
 import com.aday.abook.feature.memo.BookMemoComponent
 import com.aday.abook.feature.search.BookSearchComponent
@@ -43,5 +44,7 @@ interface ApplicationComponent {
     fun bookMemoComponentBuilder(): BookMemoComponent.Builder
 
     fun bookSearchComponentBuilder(): BookSearchComponent.Builder
+
+    fun calendarComponentBuilder(): CalendarComponent.Builder
 
 }

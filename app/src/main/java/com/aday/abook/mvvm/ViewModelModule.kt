@@ -2,6 +2,7 @@ package com.aday.abook.mvvm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.aday.abook.feature.calendar.CalendarViewModel
 import com.aday.abook.feature.main.MainViewModel
 import com.aday.abook.feature.memo.BookMemoViewModel
 import com.aday.abook.feature.search.BookSearchViewModel
@@ -29,4 +30,9 @@ abstract class ViewModelModule{
     @IntoMap
     @ViewModelKey(BookSearchViewModel::class)
     internal abstract fun serachViewModel(viewModel: BookSearchViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CalendarViewModel::class)
+    internal abstract fun calendarViewMdel(viewModel: CalendarViewModel): ViewModel
 }

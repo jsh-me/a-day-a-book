@@ -79,6 +79,8 @@ class MainActivity : AppCompatActivity(){
         })
         mViewModel.mSaveButtonClicked.observe(this, Observer{
             mViewModel.saveData(selectedDate, mBookCoverImage, mBookName, mRating, fiveWords.text.toString())
+            setResult(3000, intent.putExtra(Consts.CALENDAR_DATE, selectedDate))
+            finish()
         })
 
     }

@@ -17,5 +17,5 @@ interface CalendarComponent {
         fun build(): CalendarComponent
     }
 
-    fun iject(activity: CalendarActivity)
+    fun inject(activity: CalendarActivity)
 }
