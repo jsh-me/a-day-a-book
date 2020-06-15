@@ -14,13 +14,12 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/brown1">
+    android:layout_height="match_parent">
 
     <ImageButton
         android:id="@+id/backButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_margin="10dp"
         android:background="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +32,7 @@
         android:text="@string/save"
         android:textColor="@color/main"
         android:visibility="@{mainViewModel.isSave ? view.VISIBLE : view.INVISIBLE }"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         android:padding="10dp"
         android:layout_margin="10dp"
