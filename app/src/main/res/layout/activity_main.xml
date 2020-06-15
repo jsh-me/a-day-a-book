@@ -7,6 +7,9 @@
         <variable
             name="mainViewModel"
             type="com.aday.abook.feature.main.MainViewModel" />
+        <variable
+            name="view"
+            type="android.view.View" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,10 +32,12 @@
         android:layout_height="wrap_content"
         android:text="@string/save"
         android:textColor="@color/main"
+        android:visibility="@{mainViewModel.isSave ? view.VISIBLE : view.INVISIBLE }"
         android:textSize="18sp"
         android:textStyle="bold"
         android:padding="10dp"
         android:layout_margin="10dp"
+        android:onClick="@{() -> mainViewModel.saveButtonClicked()}"
         app:layout_constraintBottom_toBottomOf="@+id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/backButton" />

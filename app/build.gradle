@@ -96,5 +96,7 @@ dependencies {
     //calendar
     implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
 
+    //db debug
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 
 }
