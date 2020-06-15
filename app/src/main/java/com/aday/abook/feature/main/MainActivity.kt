@@ -2,6 +2,8 @@ package com.aday.abook.feature.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
+import android.widget.RatingBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity(){
     private var selectedDate: String= ""
     private var mBookCoverImage: String= ""
     private var mBookName: String= ""
+    private var mRating: Float = 0F
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +56,18 @@ class MainActivity : AppCompatActivity(){
 
     private fun initView(){
         selectedDate = intent.getStringExtra(Consts.CALENDAR_DATE)?:""
+        mBinding.fiveWords.setOnEditorActionListener { _, actionId, _ ->
+            when(actionId){
+                EditorInfo.IME_ACTION_GO -> {
+                    mViewModel.saveFiveWordsButtonClicked()
+                }
+            }
+            true
+        }
+
+        mBinding.ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
+            mRating = rating
+        }
     }
 
     private fun observeViewModel(){
@@ -63,8 +78,9 @@ class MainActivity : AppCompatActivity(){
             gotoMemo()
         })
         mViewModel.mSaveButtonClicked.observe(this, Observer{
-            mViewModel.saveData(selectedDate, mBookCoverImage, mBookName)
+            mViewModel.saveData(selectedDate, mBookCoverImage, mBookName, mRating, fiveWords.text.toString())
         })
+
     }
 
     private fun gotoBookSearch(){
@@ -83,8 +99,8 @@ class MainActivity : AppCompatActivity(){
         if(requestCode==1000 && resultCode==1000){
             mBookCoverImage = data?.getStringExtra(Consts.BOOK_IMAGE).toString()
             mBookName = data?.getStringExtra(Consts.BOOK_NAME).toString()
-            bookCoverImage.loadUrl(mBookCoverImage)
-            bookName.text = mBookName
+            mBinding.bookCoverImage.loadUrl(mBookCoverImage)
+            mBinding.bookName.text = mBookName
             mViewModel.setSaveButton(true)
         }
     }

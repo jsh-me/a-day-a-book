@@ -1,10 +1,8 @@
 package com.aday.abook.feature.main
 
 import android.app.Application
-import androidx.databinding.Observable
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
 import com.aday.abook.mvvm.SingleLiveEvent
 import com.aday.core.api.usecase.InsertBookListUseCase
 import com.aday.model.room.BookListEntity
@@ -15,16 +13,16 @@ class MainViewModel @Inject constructor(application: Application,
 
     val mDetailClicked: SingleLiveEvent<Void> = SingleLiveEvent()
     val mAddBookClicked: SingleLiveEvent<Void> = SingleLiveEvent()
-    val mAddWord: MutableLiveData<Boolean> = MutableLiveData()
     val mSaveButtonClicked: SingleLiveEvent<Void> = SingleLiveEvent()
     val isSave: ObservableField<Boolean> = ObservableField(false)
+    val isFocusableText : ObservableField<Boolean> = ObservableField()
 
     fun initData(){
         //RoomDB
     }
 
-    fun addWordClicked(){
-        mAddWord.value = true
+    fun fixWordClicked(){
+        isFocusableText.set(true)
     }
 
     fun addBookClicked(){
@@ -39,12 +37,16 @@ class MainViewModel @Inject constructor(application: Application,
         mSaveButtonClicked.call()
     }
 
-    fun saveData(date: String, image: String, name: String){
-        insertBookListUseCase.insert(BookListEntity(null, date, image,name, 5, null, null))
+    fun saveData(date: String, image: String, name: String, rating: Float, fiveWords: String){
+        insertBookListUseCase.insert(BookListEntity(null, date, image,name, rating, fiveWords, null))
     }
 
     fun setSaveButton(b: Boolean){
         isSave.set(b)
+    }
+
+    fun saveFiveWordsButtonClicked() {
+        isFocusableText.set(false)
     }
 
 }

@@ -2,6 +2,9 @@ package com.aday.abook.feature.search
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -28,6 +31,7 @@ class BookSearchActivity : AppCompatActivity(){
 
         injectComponent()
         setupDataBinding()
+        setSearchBar()
         observeViewModel()
     }
 
@@ -45,6 +49,17 @@ class BookSearchActivity : AppCompatActivity(){
         mBinding.searchViewModel = mViewModel
     }
 
+    private fun setSearchBar(){
+         mBinding.editSearchName.setOnEditorActionListener { _, actionId, _ ->
+            when(actionId){
+                EditorInfo.IME_ACTION_SEARCH -> {
+                    mViewModel.searchButtonClicked()
+                }
+            }
+            true
+        }
+    }
+
     private fun observeViewModel(){
         mViewModel.mSearchText.observe(this, Observer{
 
@@ -56,8 +71,8 @@ class BookSearchActivity : AppCompatActivity(){
     }
 
     private fun initRecyclerView(){
-        bookResultRecycler.adapter?.notifyDataSetChanged()
-        bookResultRecycler.apply{
+        mBinding.bookResultRecycler.adapter?.notifyDataSetChanged()
+        mBinding.bookResultRecycler.apply{
             layoutManager = LinearLayoutManager(this@BookSearchActivity)
             adapter = BookSearchAdapter(mViewModel.getBookList(), click())
         }

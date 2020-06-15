@@ -15,6 +15,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     android:background="@color/brown1">
 
     <ImageButton
@@ -60,22 +61,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backButton"
-        app:layout_constraintVertical_bias="0.3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1 / 5 번째 책"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/bookCoverImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintVertical_bias="0.16000003" />
 
     <ImageButton
         android:id="@+id/bookCoverImage"
-        android:layout_width="170dp"
-        android:layout_height="250dp"
+        android:layout_width="120dp"
+        android:layout_height="180dp"
         android:background="@drawable/ic_green_addbook"
         android:onClick="@{() -> mainViewModel.addBookClicked()}"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -112,18 +103,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:textSize="16sp"
         android:textColor="@color/main"
-        app:layout_constraintEnd_toStartOf="@+id/nextButton"
-        app:layout_constraintStart_toEndOf="@+id/previousButton"
-        app:layout_constraintTop_toBottomOf="@+id/bookCoverImage"
-        android:text="어린왕자" />
+        android:textSize="16sp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bookCoverImage" />
 
     <RatingBar
         android:id="@+id/ratingBar"
         style="@style/Widget.AppCompat.RatingBar.Indicator"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:isIndicator="false"
         android:numStars="5"
@@ -136,9 +127,10 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="30dp"
-        android:layout_height="0dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:background="@drawable/ic_pen"
+        android:onClick="@{() -> mainViewModel.saveFiveWordsButtonClicked()}"
         app:layout_constraintBottom_toBottomOf="@+id/fiveWords"
         app:layout_constraintStart_toEndOf="@+id/ratingBar"
         app:layout_constraintTop_toTopOf="@+id/fiveWords" />
@@ -152,9 +144,14 @@
         android:background="@drawable/underline_skin_color"
         android:gravity="center"
         android:paddingBottom="3dp"
-        android:text="그저그랬어"
         android:textColor="@color/main"
         android:textStyle="bold"
+        android:imeOptions="actionGo"
+        android:inputType="text"
+        android:hint="5글자로 책을 설명해봐!"
+        android:textSize="16sp"
+        android:maxLength="5"
+        android:enabled="@{mainViewModel.isFocusableText ? true : false }"
         app:layout_constraintEnd_toEndOf="@+id/ratingBar"
         app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="@+id/ratingBar"
@@ -166,7 +163,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/ic_add_button"
-        android:onClick="@{() -> mainViewModel.addWordClicked()}"
+        android:onClick="@{() -> mainViewModel.fixWordClicked()}"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
         app:layout_constraintStart_toEndOf="@+id/imageButton2"
         app:layout_constraintTop_toTopOf="@+id/imageButton2" />

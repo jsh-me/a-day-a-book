@@ -2,14 +2,13 @@ package com.aday.abook.feature.search
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.text.Html
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.aday.abook.mvvm.SingleLiveEvent
 import com.aday.core.api.usecase.GetSearchBookUseCase
+import com.aday.core.utils.removeHttpTag
 import com.aday.model.entity.BookInfo
-import java.net.URLEncoder
 import javax.inject.Inject
 
 class BookSearchViewModel @Inject constructor(application: Application,
@@ -28,9 +27,9 @@ class BookSearchViewModel @Inject constructor(application: Application,
         getSearchBookUseCase.getSearchBook(mSearchText.value!!)
             .subscribe({
                 if(it.items.isNotEmpty()) {
-                    it.items.map {
-                        mBookListInfo.add(BookInfo(it.title.replace("<b>","").replace("</b>",""),
-                            it.author, it.publisher, it.image))
+                    it.items.map { book ->
+                    mBookListInfo.add(BookInfo(book.title.removeHttpTag(),
+                            book.author.removeHttpTag(), book.publisher.removeHttpTag(), book.image))
                     }
                     searchNoResult.set(false)
                     mBookListLoadFinished.call()
