@@ -1,4 +1,4 @@
-package com.aday.abook.fragment.calendar
+package com.aday.abook.feature.calendar
 
 import android.content.Context
 import android.content.Intent

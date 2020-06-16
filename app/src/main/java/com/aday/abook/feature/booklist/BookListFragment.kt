@@ -1,4 +1,4 @@
-package com.aday.abook.fragment.list
+package com.aday.abook.feature.booklist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.aday.abook.BaseApplication
 import com.aday.abook.databinding.FragmentCalendarListBinding
-import com.aday.abook.databinding.FragmentCalendarViewBinding
 import com.aday.abook.feature.main.MainViewModel
-import com.aday.abook.fragment.calendar.CalendarFragment
 import javax.inject.Inject
 
 class BookListFragment: Fragment(){

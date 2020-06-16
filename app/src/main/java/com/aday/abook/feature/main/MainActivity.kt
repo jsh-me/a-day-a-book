@@ -1,6 +1,5 @@
 package com.aday.abook.feature.main
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -9,8 +8,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.aday.abook.BaseApplication
 import com.aday.abook.R
 import com.aday.abook.databinding.ActivityMainBinding
-import com.aday.abook.fragment.calendar.CalendarFragment
-import com.aday.abook.fragment.list.BookListFragment
+import com.aday.abook.feature.calendar.CalendarFragment
+import com.aday.abook.feature.booklist.BookListFragment
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(){

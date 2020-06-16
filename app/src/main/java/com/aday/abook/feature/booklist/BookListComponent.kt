@@ -1,4 +1,4 @@
-package com.aday.abook.fragment.list
+package com.aday.abook.feature.booklist
 
 import androidx.fragment.app.Fragment
 import com.aday.core.dagger.annotation.scope.FragmentScope
