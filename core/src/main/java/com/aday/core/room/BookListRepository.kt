@@ -12,4 +12,6 @@ interface BookListRepository {
     fun delete(bookListEntity: BookListEntity)
 
     fun getBookListByDate(clickedDate: String): Observable<BookListEntity>
+
+    fun loadAllDate(): Observable<List<String>>
 }

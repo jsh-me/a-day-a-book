@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.aday.abook.BaseApplication
@@ -33,6 +34,7 @@ class CalendarActivity : AppCompatActivity(){
 
         injectComponent()
         setupDataBinding()
+        observeViewModel()
         initView()
     }
 
@@ -50,27 +52,31 @@ class CalendarActivity : AppCompatActivity(){
     }
 
     private fun initView(){
+        mViewModel.initView()
         //TODO: 현재 날짜 이후로 터치 금지
         mBinding.calendarView.state().edit()
             .setMaximumDate(CalendarDay.from(CalendarDay.today().year, CalendarDay.today().month, CalendarDay.today().day))
             .commit()
-
-        Toast.makeText(this, "${CalendarDay.today()}", Toast.LENGTH_SHORT).show()
         mBinding.calendarView.setOnDateChangedListener { _, date, _ ->
             mCalendarDay = date
             val intent = Intent(this, MainActivity::class.java).apply{
-                putExtra(Consts.CALENDAR_DATE, date.toString())
+                putExtra(Consts.CALENDAR_DATE, "${date.year},${date.month},${date.day}")
             }
             startActivityForResult(intent, 3000)
         }
+    }
 
+    private fun observeViewModel(){
+        mViewModel.mLoadingFinished.observe(this , Observer {
+            mBinding.calendarView.addDecorator(EventDecorator(Color.RED, mViewModel.getDateList()))
+        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == 3000 && resultCode == 3000) {
-            mList.add(mCalendarDay)
-            mBinding.calendarView.addDecorator(EventDecorator(Color.RED, mList))
+            //mList.add(mCalendarDay)
+          //  mBinding.calendarView.addDecorator(EventDecorator(Color.RED, mList))
 
         }
     }

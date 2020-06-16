@@ -46,6 +46,9 @@ class BookListRepositoryImpl(private val bookListDao: BookListDao)
             })
     }
 
+    override fun loadAllDate(): Observable<List<String>> = bookListDao.loadAllDates()
+
+
     override fun getBookListByDate(clickedDate: String): Observable<BookListEntity>
             = bookListDao.getBookListByDate(clickedDate)
 }
