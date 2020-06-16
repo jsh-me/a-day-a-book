@@ -16,6 +16,7 @@ import com.aday.abook.feature.memo.BookMemoActivity
 import com.aday.abook.feature.search.BookSearchActivity
 import com.aday.core.consts.Consts
 import com.aday.core.utils.loadUrl
+import com.aday.core.utils.loadUrlCenterCrop
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity(){
 
     private fun initView(){
         selectedDate = intent.getStringExtra(Consts.CALENDAR_DATE)?:""
+        mViewModel.loadData(selectedDate)
         mBinding.fiveWords.setOnEditorActionListener { _, actionId, _ ->
             when(actionId){
                 EditorInfo.IME_ACTION_GO -> {
@@ -64,23 +66,51 @@ class MainActivity : AppCompatActivity(){
             }
             true
         }
-
         mBinding.ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
             mRating = rating
         }
     }
 
     private fun observeViewModel(){
+        mViewModel.mBookCoverImage.observe(this, Observer {
+            mBinding.bookCoverImage.background = null
+            mBinding.bookCoverImage.elevation = 10f
+            mBinding.bookCoverImage.loadUrlCenterCrop(it)
+        })
+        mViewModel.mBookRating.observe(this, Observer {
+            mBinding.ratingBar.rating = it
+        })
+        mViewModel.mFiveWords.observe(this, Observer {
+            mBinding.fiveWords.setText(it)
+        })
+
+        mViewModel.mClickedDate.observe(this, Observer {
+            mBinding.todayTextView.text = it
+        })
+
         mViewModel.mAddBookClicked.observe(this, Observer {
             gotoBookSearch()
         })
         mViewModel.mDetailClicked.observe(this, Observer {
             gotoMemo()
         })
-        mViewModel.mSaveButtonClicked.observe(this, Observer{
-            mViewModel.saveData(selectedDate, mBookCoverImage, mBookName, mRating, fiveWords.text.toString())
+        mViewModel.isToday.observe(this, Observer {
+            setDayText(it)
+        })
+        mViewModel.mBackButtonClicked.observe(this, Observer {
+            finish()
         })
 
+        mViewModel.mSaveButtonClicked.observe(this, Observer{
+            mViewModel.saveData(selectedDate, mBookCoverImage, mBookName, mRating, fiveWords.text.toString())
+            setResult(3000, intent.putExtra(Consts.CALENDAR_DATE, selectedDate))
+            finish()
+        })
+    }
+
+    private fun setDayText(isToday: Boolean){
+        if(isToday) mBinding.whatBookTextView.text = resources.getText(R.string.what_book)
+        else mBinding.whatBookTextView.text = resources.getText(R.string.what_book_past)
     }
 
     private fun gotoBookSearch(){

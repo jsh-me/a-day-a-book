@@ -18,4 +18,7 @@ interface BookListDao {
 
     @Query("SELECT * FROM book_list_table WHERE date LIKE :clickedDate LIMIT 1")
     fun getBookListByDate(clickedDate: String): Observable<BookListEntity>
+
+    @Query("SELECT date FROM book_list_table")
+    fun loadAllDates(): Observable<List<String>>
 }
