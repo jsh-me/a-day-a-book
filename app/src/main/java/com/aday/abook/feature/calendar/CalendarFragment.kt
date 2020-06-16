@@ -64,7 +64,7 @@ class CalendarFragment: Fragment() {
     }
 
     private fun initView(){
-        mViewModel.initView()
+        mViewModel.initCalendarView()
         //TODO: 현재 날짜 이후로 터치 금지
         mBinding.calendarView.state().edit()
             .setMaximumDate(CalendarDay.from(CalendarDay.today().year, CalendarDay.today().month, CalendarDay.today().day))
@@ -79,12 +79,7 @@ class CalendarFragment: Fragment() {
     }
     private fun observeViewModel(){
         mViewModel.mLoadingFinished.observe(this , Observer {
-            mBinding.calendarView.addDecorator(
-                EventDecorator(
-                    Color.RED,
-                    mViewModel.getDateList()
-                )
-            )
+            mBinding.calendarView.addDecorator(EventDecorator(Color.RED, mViewModel.getDateList()))
         })
     }
 }

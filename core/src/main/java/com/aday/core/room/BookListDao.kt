@@ -1,6 +1,7 @@
 package com.aday.core.room
 
 import androidx.room.*
+import com.aday.model.entity.BookInfo
 import com.aday.model.room.BookListEntity
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -21,4 +22,7 @@ interface BookListDao {
 
     @Query("SELECT date FROM book_list_table")
     fun loadAllDates(): Observable<List<String>>
+
+    @Query("SELECT * FROM book_list_table")
+    fun getAllData(): Observable<List<BookListEntity>>
 }

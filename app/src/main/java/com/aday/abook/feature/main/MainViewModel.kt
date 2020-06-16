@@ -4,21 +4,28 @@ import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.aday.abook.mvvm.SingleLiveEvent
+import com.aday.core.api.usecase.GetAllDataUseCase
 import com.aday.core.api.usecase.LoadAllDateUseCase
+import com.aday.model.room.BookListEntity
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(application: Application,
-                                        private val loadAllDatesUseCase: LoadAllDateUseCase): AndroidViewModel(application){
+                                        private val loadAllDateUseCase: LoadAllDateUseCase,
+                                        private val getAllDataUseCase: GetAllDataUseCase): AndroidViewModel(application){
 
     var mLoadingFinished: SingleLiveEvent<Void> = SingleLiveEvent()
+    var mBookListLoadingFinished: SingleLiveEvent<Void> = SingleLiveEvent()
     private var mAllDateList: ArrayList<CalendarDay> = ArrayList()
+    private var mAllBookDataList: ArrayList<BookListEntity> = ArrayList()
 
     @SuppressLint("CheckResult")
-    fun initView(){
-        loadAllDatesUseCase.allLoadDates()
+    fun initCalendarView(){
+        mAllDateList.clear()
+        loadAllDateUseCase.allLoadDates()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -28,7 +35,23 @@ class MainViewModel @Inject constructor(application: Application,
                 }
                 mLoadingFinished.call()
             },{
-                it.localizedMessage
+                Timber.e(it.localizedMessage)
+            })
+    }
+
+    @SuppressLint("CheckResult")
+    fun initBookListVIew(){
+        mAllBookDataList.clear()
+        getAllDataUseCase.getAllData()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                it.map{ entity ->
+                    mAllBookDataList.add(entity)
+                }
+                mBookListLoadingFinished.call()
+            },{
+                Timber.e(it.localizedMessage)
             })
     }
 
@@ -36,4 +59,7 @@ class MainViewModel @Inject constructor(application: Application,
         return mAllDateList
     }
 
+    fun getAllBookDataList(): ArrayList<BookListEntity> {
+        return mAllBookDataList
+    }
 }

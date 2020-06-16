@@ -3,79 +3,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:padding="10dp"
     android:layout_margin="5dp"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/bookImage"
+        android:id="@+id/myBookImage"
         android:layout_width="100dp"
         android:layout_height="140dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:background="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/bookName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/bookname"
-        app:layout_constraintStart_toEndOf="@+id/bookImage"
-        app:layout_constraintTop_toTopOf="@+id/bookImage" />
-
-    <TextView
-        android:id="@+id/bookNameResult"
+        android:id="@+id/myBookName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bookName"
-        app:layout_constraintTop_toTopOf="@+id/bookName"
+        android:gravity="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/myBookImage"
+        app:layout_constraintStart_toStartOf="@+id/myBookImage"
+        app:layout_constraintTop_toBottomOf="@+id/myBookImage"
         tools:text="book name" />
 
-    <TextView
-        android:id="@+id/authorName"
+    <RatingBar
+        android:id="@+id/myRating"
+        style="@style/Widget.AppCompat.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@string/author"
-        app:layout_constraintBottom_toTopOf="@+id/publisherName"
-        app:layout_constraintStart_toEndOf="@+id/bookImage"
-        app:layout_constraintTop_toBottomOf="@+id/bookNameResult" />
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="0"
+        android:stepSize="0.5"
+        app:layout_constraintEnd_toEndOf="@+id/myBookName"
+        app:layout_constraintStart_toStartOf="@+id/myBookName"
+        app:layout_constraintTop_toBottomOf="@+id/myBookName" />
 
     <TextView
-        android:id="@+id/authorNameResult"
+        android:id="@+id/myFiveWords"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/authorName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/authorName"
-        app:layout_constraintTop_toTopOf="@+id/authorName"
-        tools:text="authorName" />
-
-    <TextView
-        android:id="@+id/publisherName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@string/publisher"
-        app:layout_constraintBottom_toBottomOf="@+id/bookImage"
-        app:layout_constraintStart_toEndOf="@+id/bookImage" />
-
-    <TextView
-        android:id="@+id/publisherNameResult"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/publisherName"
-        app:layout_constraintTop_toTopOf="@+id/publisherName"
-        tools:text="publisherNameResult" />
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/myBookImage"
+        app:layout_constraintStart_toStartOf="@+id/myBookImage"
+        app:layout_constraintTop_toBottomOf="@+id/myRating"
+        tools:text="너무재밌어" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun initView(){
-        mViewModel.initView()
         mBinding.segmentedButton {
             initWithItems { listOf("캘린더로 보기", "리스트로 보기") }
             initialCheckedIndex = 0 }
