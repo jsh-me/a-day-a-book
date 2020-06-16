@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".feature.calendar.CalendarActivity">
+        <activity android:name=".feature.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +25,7 @@
         <activity android:name=".feature.search.BookSearchActivity"/>
         <activity android:name=".feature.memo.BookMemoActivity"
             android:theme="@style/Theme.Transparent" />
-        <activity android:name=".feature.main.MainActivity"/>
+        <activity android:name=".feature.addbook.AddBookActivity"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.aday.abook.feature.calendar
+package com.aday.abook.feature.addbook
 
 import android.app.Activity
 import com.aday.core.dagger.annotation.scope.ActivityScope
@@ -8,14 +8,14 @@ import dagger.Subcomponent
 
 @ActivityScope
 @Subcomponent(modules = [ActivityModule::class])
-interface CalendarComponent {
+interface AddBookComponent {
     @Subcomponent.Builder
     interface Builder{
         @BindsInstance
         fun activity(activity: Activity): Builder
 
-        fun build(): CalendarComponent
+        fun build(): AddBookComponent
     }
 
-    fun inject(activity: CalendarActivity)
+    fun inject(activity: AddBookActivity)
 }

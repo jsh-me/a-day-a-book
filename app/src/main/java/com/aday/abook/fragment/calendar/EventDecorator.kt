@@ -1,4 +1,4 @@
-package com.aday.abook.feature.calendar
+package com.aday.abook.fragment.calendar
 
 import com.prolificinteractive.materialcalendarview.DayViewFacade
 import com.prolificinteractive.materialcalendarview.CalendarDay
