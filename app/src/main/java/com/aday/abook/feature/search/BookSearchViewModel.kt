@@ -19,6 +19,7 @@ class BookSearchViewModel @Inject constructor(application: Application,
     private val mBookListInfo: ArrayList<BookInfo> = ArrayList()
 
     val mBookListLoadFinished: SingleLiveEvent<Void> = SingleLiveEvent()
+    val mClearWordButtonClicked: SingleLiveEvent<Void> = SingleLiveEvent()
 
     @SuppressLint("CheckResult")
     fun searchButtonClicked(){
@@ -42,6 +43,10 @@ class BookSearchViewModel @Inject constructor(application: Application,
             },{
                 it.localizedMessage
             })
+    }
+
+    fun clearWordButtonClicked(){
+        mSearchText.value = ""
     }
 
     fun getBookList(): ArrayList<BookInfo> {

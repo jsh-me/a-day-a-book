@@ -73,7 +73,8 @@ class MainActivity : AppCompatActivity(){
 
     private fun observeViewModel(){
         mViewModel.mBookCoverImage.observe(this, Observer {
-            mBinding.bookCoverImage.background = null
+            mBinding.bookCoverImage.background = getDrawable(R.drawable.image_back)
+            mBinding.bookCoverImage.clipToOutline = true
             mBinding.bookCoverImage.elevation = 10f
             mBinding.bookCoverImage.loadUrlCenterCrop(it)
         })
@@ -130,7 +131,9 @@ class MainActivity : AppCompatActivity(){
             mBookCoverImage = data?.getStringExtra(Consts.BOOK_IMAGE).toString()
             mBookName = data?.getStringExtra(Consts.BOOK_NAME).toString()
             mBinding.bookCoverImage.loadUrl(mBookCoverImage)
-            mBinding.bookCoverImage.background = resources.getDrawable(R.drawable.image_shadow, null)
+            mBinding.bookCoverImage.background = getDrawable(R.drawable.image_back)
+            mBinding.bookCoverImage.clipToOutline = true
+            mBinding.bookCoverImage.elevation = 10f
             mBinding.bookName.text = mBookName
             mViewModel.setSaveButton(true)
         }
