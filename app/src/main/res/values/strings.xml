@@ -9,4 +9,7 @@
     <string name="save">저장</string>
     <string name="what_book">오늘은 무슨 책을 읽으시나요?</string>
     <string name="what_book_past">무슨 책을 읽으셨나요?</string>
+
+    <string name="see_calendar">캘린더로 보기</string>
+    <string name="see_list">리스트로 보기</string>
 </resources>

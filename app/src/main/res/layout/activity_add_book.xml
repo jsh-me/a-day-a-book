@@ -42,6 +42,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/backButton" />
 
+    <ImageView
+        android:id="@+id/moreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="@{addBookViewModel.isSave ? view.INVISIBLE : view.VISIBLE }"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:onClick="@{() -> addBookViewModel.moreButtonClicked()}"
+        app:srcCompat="@drawable/ic_more"
+        app:layout_constraintBottom_toBottomOf="@+id/backButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backButton" />
+
     <TextView
         android:id="@+id/todayTextView"
         android:layout_width="wrap_content"
@@ -68,8 +81,8 @@
 
     <ImageButton
         android:id="@+id/bookCoverImage"
-        android:layout_width="120dp"
-        android:layout_height="174dp"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
         android:background="@drawable/ic_green_addbook"
         android:layout_margin="10dp"
         android:onClick="@{() -> addBookViewModel.addBookClicked()}"

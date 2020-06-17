@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="dialog"
+            type="com.aday.core.customview.DialogAlertFragment" />
+    </data>
+
+<LinearLayout
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/back_layout_white_round">
+
+    <TextView
+        android:id="@+id/fixed_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="수정하기"
+        android:textSize="16sp"
+        android:onClick="@{() -> dialog.fixButton()}" />
+
+    <TextView
+        android:id="@+id/share_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="공유하기"
+        android:textSize="16sp"
+        android:onClick="@{() -> dialog.shareButton()}" />
+
+    <TextView
+        android:id="@+id/delete_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="삭제하기"
+        android:textSize="16sp"
+        android:onClick="@{() -> dialog.deleteButton()}"/>
+
+</LinearLayout>
+</layout>

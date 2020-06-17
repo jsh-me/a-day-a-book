@@ -24,7 +24,7 @@ class AddBookViewModel @Inject constructor(application: Application,
     val isSave: ObservableField<Boolean> = ObservableField(false)
     val isFocusableText : ObservableField<Boolean> = ObservableField()
     val mBackButtonClicked: SingleLiveEvent<Void> = SingleLiveEvent()
-
+    var mMoreButtonClicked: SingleLiveEvent<Void> = SingleLiveEvent()
 
     var mBookCoverImage: MutableLiveData<String> = MutableLiveData()
     var mBookName: MutableLiveData<String> = MutableLiveData()
@@ -89,6 +89,10 @@ class AddBookViewModel @Inject constructor(application: Application,
 
     fun saveFiveWordsButtonClicked() {
         isFocusableText.set(false)
+    }
+
+    fun moreButtonClicked(){
+        mMoreButtonClicked.call()
     }
 
 }

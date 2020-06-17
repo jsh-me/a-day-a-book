@@ -16,6 +16,7 @@ import com.aday.abook.databinding.ActivityMainBinding
 import com.aday.abook.feature.memo.BookMemoActivity
 import com.aday.abook.feature.search.BookSearchActivity
 import com.aday.core.consts.Consts
+import com.aday.core.customview.DialogAlertFragment
 import com.aday.core.utils.loadUrl
 import com.aday.core.utils.loadUrlCenterCrop
 import kotlinx.android.synthetic.main.activity_add_book.*
@@ -28,6 +29,8 @@ class AddBookActivity : AppCompatActivity(){
     private lateinit var mBinding: ActivityAddBookBinding
     private lateinit var mViewModel: AddBookViewModel
 
+    private lateinit var dialog: DialogAlertFragment
+
     private var selectedDate: String= ""
     private var mBookCoverImage: String= ""
     private var mBookName: String= ""
@@ -38,7 +41,6 @@ class AddBookActivity : AppCompatActivity(){
 
         injectComponent()
         setupDatabinding()
-        initFragment()
         initView()
         observeViewModel()
     }
@@ -56,11 +58,6 @@ class AddBookActivity : AppCompatActivity(){
         mViewModel = ViewModelProviders.of(this, viewModelFactory)[AddBookViewModel::class.java]
         mBinding.addBookViewModel = mViewModel
     }
-
-    private fun initFragment(){
-
-    }
-
     private fun initView(){
         selectedDate = intent.getStringExtra(Consts.CALENDAR_DATE)?:""
         mViewModel.loadData(selectedDate)
@@ -83,6 +80,9 @@ class AddBookActivity : AppCompatActivity(){
             mBinding.bookCoverImage.clipToOutline = true
             mBinding.bookCoverImage.elevation = 10f
             mBinding.bookCoverImage.loadUrlCenterCrop(it)
+        })
+        mViewModel.mBookName.observe(this, Observer {
+            mBinding.bookName.text = it
         })
         mViewModel.mBookRating.observe(this, Observer {
             mBinding.ratingBar.rating = it
@@ -112,6 +112,14 @@ class AddBookActivity : AppCompatActivity(){
             mViewModel.saveData(selectedDate, mBookCoverImage, mBookName, mRating, fiveWords.text.toString())
             setResult(3000, intent.putExtra(Consts.CALENDAR_DATE, selectedDate))
             finish()
+        })
+
+        mViewModel.mMoreButtonClicked.observe(this, Observer{
+            dialog = DialogAlertFragment.newInstance()
+            if(::dialog.isInitialized){
+                dialog.show(supportFragmentManager, "dialog")
+            }
+
         })
     }
 

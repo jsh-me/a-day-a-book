@@ -26,7 +26,8 @@
         app:rippleColorChecked="@color/brown2"
         app:segmentColorChecked="@color/brown2"
         app:spreadType="evenly"
-        app:textColor="@color/white">
+        app:textColor="@color/brown2"
+        app:textColorChecked="@color/white">
     </com.creageek.segmentedbutton.SegmentedButton>
 
     <FrameLayout

@@ -48,15 +48,15 @@ class MainActivity : AppCompatActivity(){
 
     private fun initView(){
         mBinding.segmentedButton {
-            initWithItems { listOf("캘린더로 보기", "리스트로 보기") }
+            initWithItems { listOf(resources.getString(R.string.see_calendar), resources.getString(R.string.see_list)) }
             initialCheckedIndex = 0 }
         mBinding.segmentedButton.onSegmentChecked {
             when(it.text){
-                "캘린더로 보기" -> {
+                resources.getString(R.string.see_calendar) -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.mainContainer, CalendarFragment.newInstance()).commit()
                 }
-                "리스트로 보기" -> {
+                resources.getString(R.string.see_list) -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.mainContainer, BookListFragment.newInstance()).commit()
                 }
