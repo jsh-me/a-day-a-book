@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aday.abook.BaseApplication
 import com.aday.abook.databinding.FragmentCalendarListBinding
@@ -22,6 +23,7 @@ class BookListFragment: Fragment(){
 
     private lateinit var mBinding: FragmentCalendarListBinding
     private lateinit var mViewModel: MainViewModel
+    private lateinit var bookListAdapter: BookListAdapter
 
     companion object{
         @JvmStatic
@@ -59,9 +61,10 @@ class BookListFragment: Fragment(){
 
     private fun observeViewModel(){
         mViewModel.mBookListLoadingFinished.observe(this, Observer {
+            bookListAdapter = BookListAdapter(mViewModel.getAllBookDataList(), click())
             mBinding.bookListRecycler.apply{
-                layoutManager = LinearLayoutManager(activity)
-                adapter = BookListAdapter(mViewModel.getAllBookDataList(), click())
+                layoutManager = GridLayoutManager(context, 2)
+                adapter = bookListAdapter
             }
             mBinding.bookListRecycler.adapter?.notifyDataSetChanged()
         })

@@ -3,6 +3,7 @@ package com.aday.abook.feature.main
 import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import com.aday.abook.mvvm.SingleLiveEvent
 import com.aday.core.api.usecase.GetAllDataUseCase
 import com.aday.core.api.usecase.LoadAllDateUseCase
@@ -19,8 +20,8 @@ class MainViewModel @Inject constructor(application: Application,
 
     var mLoadingFinished: SingleLiveEvent<Void> = SingleLiveEvent()
     var mBookListLoadingFinished: SingleLiveEvent<Void> = SingleLiveEvent()
-    private var mAllDateList: ArrayList<CalendarDay> = ArrayList()
-    private var mAllBookDataList: ArrayList<BookListEntity> = ArrayList()
+    var mAllDateList: ArrayList<CalendarDay> = ArrayList()
+    var mAllBookDataList: ArrayList<BookListEntity> = ArrayList()
 
     @SuppressLint("CheckResult")
     fun initCalendarView(){

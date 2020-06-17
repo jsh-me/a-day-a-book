@@ -13,8 +13,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bookListRecycler"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        android:padding="10dp"
+        android:paddingBottom="@dimen/default_segment_height"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

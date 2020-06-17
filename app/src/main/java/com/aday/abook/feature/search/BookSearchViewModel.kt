@@ -19,7 +19,6 @@ class BookSearchViewModel @Inject constructor(application: Application,
     private val mBookListInfo: ArrayList<BookInfo> = ArrayList()
 
     val mBookListLoadFinished: SingleLiveEvent<Void> = SingleLiveEvent()
-    val mClearWordButtonClicked: SingleLiveEvent<Void> = SingleLiveEvent()
 
     @SuppressLint("CheckResult")
     fun searchButtonClicked(){
