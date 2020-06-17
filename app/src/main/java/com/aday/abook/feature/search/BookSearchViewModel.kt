@@ -14,7 +14,7 @@ import javax.inject.Inject
 class BookSearchViewModel @Inject constructor(application: Application,
                                               private val getSearchBookUseCase: GetSearchBookUseCase): AndroidViewModel(application){
 
-    val mSearchText: MutableLiveData<String> = MutableLiveData()
+    val mSearchText: ObservableField<String> = ObservableField()
     val searchNoResult: ObservableField<Boolean> = ObservableField()
     private val mBookListInfo: ArrayList<BookInfo> = ArrayList()
 
@@ -24,7 +24,7 @@ class BookSearchViewModel @Inject constructor(application: Application,
     fun searchButtonClicked(){
         mBookListInfo.clear()
        // val encodeText = URLEncoder.encode(mSearchText.value!!, "UTF-8")
-        getSearchBookUseCase.getSearchBook(mSearchText.value!!)
+        getSearchBookUseCase.getSearchBook(mSearchText.get()!!)
             .subscribe({
                 if(it.documents.isNotEmpty()) {
                     it.documents.map { book ->
@@ -45,7 +45,7 @@ class BookSearchViewModel @Inject constructor(application: Application,
     }
 
     fun clearWordButtonClicked(){
-        mSearchText.value = ""
+        mSearchText.set("")
     }
 
     fun getBookList(): ArrayList<BookInfo> {
