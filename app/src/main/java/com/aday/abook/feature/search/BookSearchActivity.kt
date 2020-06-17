@@ -28,6 +28,7 @@ class BookSearchActivity : AppCompatActivity(){
 
     private lateinit var mBinding: ActivitySearchBookListBinding
     private lateinit var mViewModel: BookSearchViewModel
+    private lateinit var bookSearchAdapter: BookSearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,11 +83,12 @@ class BookSearchActivity : AppCompatActivity(){
     }
 
     private fun initRecyclerView(){
-        mBinding.bookResultRecycler.adapter?.notifyDataSetChanged()
+        bookSearchAdapter = BookSearchAdapter(mViewModel.getBookList(), click())
         mBinding.bookResultRecycler.apply{
             layoutManager = LinearLayoutManager(this@BookSearchActivity)
-            adapter = BookSearchAdapter(mViewModel.getBookList(), click())
+            adapter = bookSearchAdapter
         }
+        mBinding.bookResultRecycler.adapter?.notifyDataSetChanged()
     }
 
     private fun click() = { info :BookInfo ->

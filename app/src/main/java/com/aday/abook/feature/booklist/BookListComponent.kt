@@ -1,4 +1,4 @@
-package com.aday.abook.feature.calendar
+package com.aday.abook.feature.booklist
 
 import androidx.fragment.app.Fragment
 import com.aday.core.dagger.annotation.scope.FragmentScope
@@ -8,14 +8,14 @@ import dagger.Subcomponent
 
 @FragmentScope
 @Subcomponent(modules = [FragmentModule::class])
-interface CalendarComponent {
+interface BookListComponent {
     @Subcomponent.Builder
-    interface Builder{
+    interface Builder {
         @BindsInstance
         fun fragment(fragment: Fragment): Builder
 
-        fun build(): CalendarComponent
+        fun build(): BookListComponent
     }
 
-    fun inject(fragment: CalendarFragment)
+    fun inject(fragment: BookListFragment)
 }

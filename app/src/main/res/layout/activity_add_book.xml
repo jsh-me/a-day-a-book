@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="addBookViewModel"
+            type="com.aday.abook.feature.addbook.AddBookViewModel" />
+        <variable
+            name="view"
+            type="android.view.View" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:onClick="@{() -> addBookViewModel.backButtonClicked()}"
+        android:background="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:textColor="@color/main"
+        android:visibility="@{addBookViewModel.isSave ? view.VISIBLE : view.INVISIBLE }"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:onClick="@{() -> addBookViewModel.saveButtonClicked()}"
+        app:layout_constraintBottom_toBottomOf="@+id/backButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backButton" />
+
+    <ImageView
+        android:id="@+id/moreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="@{addBookViewModel.isSave ? view.INVISIBLE : view.VISIBLE }"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:onClick="@{() -> addBookViewModel.moreButtonClicked()}"
+        app:srcCompat="@drawable/ic_more"
+        app:layout_constraintBottom_toBottomOf="@+id/backButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backButton" />
+
+    <TextView
+        android:id="@+id/todayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/main"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/backButton"
+        app:layout_constraintTop_toBottomOf="@+id/backButton" />
+
+    <TextView
+        android:id="@+id/whatBookTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/what_book"
+        android:textSize="16sp"
+        android:textColor="@color/main"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/todayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/todayTextView" />
+
+
+    <ImageButton
+        android:id="@+id/bookCoverImage"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:background="@drawable/ic_green_addbook"
+        android:layout_margin="10dp"
+        android:onClick="@{() -> addBookViewModel.addBookClicked()}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <ImageButton
+        android:id="@+id/nextButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/bookCoverImage"
+        app:layout_constraintStart_toEndOf="@+id/bookCoverImage"
+        app:layout_constraintTop_toTopOf="@+id/bookCoverImage"
+        android:background="@drawable/ic_next_icon" />
+
+    <ImageButton
+        android:id="@+id/previousButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/bookCoverImage"
+        app:layout_constraintEnd_toStartOf="@+id/bookCoverImage"
+        app:layout_constraintTop_toTopOf="@+id/bookCoverImage"
+        android:background="@drawable/ic_previous_icon" />
+
+    <TextView
+        android:id="@+id/bookName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/main"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bookCoverImage" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:isIndicator="false"
+        android:numStars="5"
+        android:rating="0"
+        android:stepSize="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/nextButton"
+        app:layout_constraintStart_toEndOf="@+id/previousButton"
+        app:layout_constraintTop_toBottomOf="@+id/bookName" />
+
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/ic_pen"
+        android:onClick="@{() -> addBookViewModel.saveFiveWordsButtonClicked()}"
+        app:layout_constraintBottom_toBottomOf="@+id/fiveWords"
+        app:layout_constraintStart_toEndOf="@+id/ratingBar"
+        app:layout_constraintTop_toTopOf="@+id/fiveWords" />
+
+
+    <EditText
+        android:id="@+id/fiveWords"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/underline_skin_color"
+        android:gravity="center"
+        android:paddingBottom="3dp"
+        android:textColor="@color/main"
+        android:textStyle="bold"
+        android:imeOptions="actionGo"
+        android:inputType="text"
+        android:hint="5글자로 책을 설명해봐!"
+        android:textSize="14sp"
+        android:maxLength="5"
+        android:enabled="@{addBookViewModel.isFocusableText ? true : false }"
+        app:layout_constraintEnd_toEndOf="@+id/ratingBar"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+        app:layout_constraintStart_toStartOf="@+id/ratingBar"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+    <ImageButton
+        android:id="@+id/addWordButton"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/ic_add_button"
+        android:onClick="@{() -> addBookViewModel.fixWordClicked()}"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+
+    <ImageButton
+        android:id="@+id/detailButton"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/ic_memo_button_brown"
+        android:onClick="@{() -> addBookViewModel.detailClicked()}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

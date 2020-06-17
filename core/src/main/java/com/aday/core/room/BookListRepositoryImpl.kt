@@ -1,6 +1,7 @@
 package com.aday.core.room
 
 import android.annotation.SuppressLint
+import com.aday.model.entity.BookInfo
 import com.aday.model.room.BookListEntity
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -51,4 +52,6 @@ class BookListRepositoryImpl(private val bookListDao: BookListDao)
 
     override fun getBookListByDate(clickedDate: String): Observable<BookListEntity>
             = bookListDao.getBookListByDate(clickedDate)
+
+    override fun getAllData(): Observable<List<BookListEntity>> = bookListDao.getAllData()
 }

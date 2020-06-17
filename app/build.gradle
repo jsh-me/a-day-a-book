@@ -96,6 +96,9 @@ dependencies {
     //calendar
     implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
 
+    //segmented control
+    implementation 'com.github.creageek:segmented:1.0.0'
+
     //db debug
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 
