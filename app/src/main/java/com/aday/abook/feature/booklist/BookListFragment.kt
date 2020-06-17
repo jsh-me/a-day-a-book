@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aday.abook.BaseApplication
 import com.aday.abook.databinding.FragmentCalendarListBinding
+import com.aday.abook.feature.addbook.AddBookActivity
 import com.aday.abook.feature.main.MainViewModel
+import com.aday.core.consts.Consts
 import com.aday.model.room.BookListEntity
 import javax.inject.Inject
 
@@ -71,6 +73,10 @@ class BookListFragment: Fragment(){
     }
 
     private fun click() = { myBook : BookListEntity ->
+        val intent = Intent(requireContext(), AddBookActivity::class.java).apply{
+            putExtra(Consts.CALENDAR_DATE, myBook.date)
+        }
+        startActivity(intent)
     }
 
 }
