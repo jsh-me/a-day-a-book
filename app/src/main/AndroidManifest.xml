@@ -26,6 +26,7 @@
         <activity android:name=".feature.memo.BookMemoActivity"
             android:theme="@style/Theme.Transparent" />
         <activity android:name=".feature.addbook.AddBookActivity"/>
+        <activity android:name=".feature.setting.SettingActivity"/>
     </application>
 
 </manifest>

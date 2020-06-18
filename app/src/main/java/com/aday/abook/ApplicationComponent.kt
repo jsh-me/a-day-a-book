@@ -8,6 +8,7 @@ import com.aday.abook.feature.memo.BookMemoComponent
 import com.aday.abook.feature.search.BookSearchComponent
 import com.aday.abook.feature.calendar.CalendarComponent
 import com.aday.abook.feature.booklist.BookListComponent
+import com.aday.abook.feature.setting.SettingComponent
 import com.aday.abook.mvvm.ViewModelModule
 import com.aday.core.dagger.module.APIModule
 import com.aday.core.dagger.module.ApplicationModule
@@ -52,4 +53,5 @@ interface ApplicationComponent {
 
     fun bookListComponentBuilder(): BookListComponent.Builder
 
+    fun settingComponentBuilder(): SettingComponent.Builder
 }

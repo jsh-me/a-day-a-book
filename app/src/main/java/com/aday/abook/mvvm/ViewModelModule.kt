@@ -6,6 +6,7 @@ import com.aday.abook.feature.main.MainViewModel
 import com.aday.abook.feature.addbook.AddBookViewModel
 import com.aday.abook.feature.memo.BookMemoViewModel
 import com.aday.abook.feature.search.BookSearchViewModel
+import com.aday.abook.feature.setting.SettingComponent
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -35,4 +36,5 @@ abstract class ViewModelModule{
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     internal abstract fun mainViewMdel(viewModel: MainViewModel): ViewModel
+
 }

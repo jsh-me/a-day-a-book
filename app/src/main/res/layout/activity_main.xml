@@ -12,23 +12,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:onClick="@{() -> mainViewModel.settingButtonClicked()}"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu" />
+
+
     <com.creageek.segmentedbutton.SegmentedButton
         android:id="@+id/segmentedButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:orientation="horizontal"
         app:borderColor="@color/brown2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting"
         app:rippleColorChecked="@color/brown2"
         app:segmentColorChecked="@color/brown2"
         app:spreadType="evenly"
         app:textColor="@color/brown2"
-        app:textColorChecked="@color/white">
-    </com.creageek.segmentedbutton.SegmentedButton>
+        app:textColorChecked="@color/white" />
 
     <FrameLayout
         android:id="@+id/mainContainer"
@@ -38,8 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/segmentedButton"
-        app:layout_constraintVertical_bias="0.05">
-    </FrameLayout>
+        app:layout_constraintVertical_bias="0.05" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
