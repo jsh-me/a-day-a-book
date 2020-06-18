@@ -20,6 +20,7 @@ class MainViewModel @Inject constructor(application: Application,
 
     var mLoadingFinished: SingleLiveEvent<Void> = SingleLiveEvent()
     var mBookListLoadingFinished: SingleLiveEvent<Void> = SingleLiveEvent()
+    var mSettingButtonClicked: SingleLiveEvent<Void> = SingleLiveEvent()
     var mAllDateList: ArrayList<CalendarDay> = ArrayList()
     var mAllBookDataList: ArrayList<BookListEntity> = ArrayList()
 
@@ -64,5 +65,9 @@ class MainViewModel @Inject constructor(application: Application,
 
     fun getAllBookDataList(): ArrayList<BookListEntity> {
         return mAllBookDataList
+    }
+
+    fun settingButtonClicked(){
+        mSettingButtonClicked.call()
     }
 }
