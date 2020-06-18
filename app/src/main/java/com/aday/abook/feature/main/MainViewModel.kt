@@ -27,6 +27,7 @@ class MainViewModel @Inject constructor(application: Application,
     fun initCalendarView(){
         mAllDateList.clear()
         loadAllDateUseCase.allLoadDates()
+            .filter{it.isNotEmpty()}
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -44,6 +45,7 @@ class MainViewModel @Inject constructor(application: Application,
     fun initBookListVIew(){
         mAllBookDataList.clear()
         getAllDataUseCase.getAllData()
+            .filter{it.isNotEmpty()}
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
