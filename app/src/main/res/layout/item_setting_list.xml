@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/setPassword"
+        android:id="@+id/settingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="15dp"
@@ -17,21 +17,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/setPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/settingText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/setPassword"
+        app:layout_constraintTop_toTopOf="@+id/settingText"
         app:srcCompat="@drawable/ic_arrow_right" />
 
-    <view
-        android:id="@+id/view"
+    <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:background="@color/brown2"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/settingText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

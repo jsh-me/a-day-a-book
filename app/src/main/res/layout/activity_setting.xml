@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:paddingStart="10dp"
-    android:paddingEnd="10dp"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="setting"
+            type="com.aday.abook.feature.setting.SettingActivity" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -14,19 +17,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
+        android:onClick="@{() -> setting.backButton()}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/settingRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backButton"
         tools:itemCount="2"
         tools:listitem="@layout/item_setting_list" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
