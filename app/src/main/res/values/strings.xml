@@ -12,4 +12,7 @@
 
     <string name="see_calendar">캘린더로 보기</string>
     <string name="see_list">리스트로 보기</string>
+
+    <string name="set_password">비밀번호 설정하기</string>
+    <string name="go_to_play_store">앱 평가하기</string>
 </resources>
