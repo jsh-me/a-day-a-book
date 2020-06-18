@@ -9,12 +9,4 @@
         app:fontStyle="normal"
         app:fontWeight="500"/>
 
-    <font
-        android:fontStyle = "normal"
-        android:fontWeight = "400"
-        android:font = "@font/nanumgothicbold"
-        app:font="@font/nanumgothicbold"
-        app:fontStyle="normal"
-        app:fontWeight="500"/>
-
 </font-family>
