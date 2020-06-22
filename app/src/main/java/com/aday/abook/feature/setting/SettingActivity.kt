@@ -1,5 +1,6 @@
 package com.aday.abook.feature.setting
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aday.abook.BaseApplication
 import com.aday.abook.R
 import com.aday.abook.databinding.ActivitySettingBinding
+import com.aday.abook.feature.pwd.PwdActivity
 import javax.inject.Inject
 
 class SettingActivity: AppCompatActivity(){
@@ -49,6 +51,8 @@ class SettingActivity: AppCompatActivity(){
         when(pos){
             0 ->{
                 //set password
+                val intent = Intent(this, PwdActivity::class.java)
+                startActivity(intent)
             }
             1->{
                 //go to play store

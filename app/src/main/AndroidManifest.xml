@@ -27,6 +27,7 @@
             android:theme="@style/Theme.Transparent" />
         <activity android:name=".feature.addbook.AddBookActivity"/>
         <activity android:name=".feature.setting.SettingActivity"/>
+        <activity android:name=".feature.pwd.PwdActivity"/>
     </application>
 
 </manifest>

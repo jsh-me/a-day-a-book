@@ -15,4 +15,6 @@
 
     <string name="set_password">비밀번호 설정하기</string>
     <string name="go_to_play_store">앱 평가하기</string>
+
+    <string name="desc_password">비밀번호를 입력하세요.</string>
 </resources>

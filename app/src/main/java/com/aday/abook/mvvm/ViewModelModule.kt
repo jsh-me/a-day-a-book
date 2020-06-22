@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.aday.abook.feature.main.MainViewModel
 import com.aday.abook.feature.addbook.AddBookViewModel
 import com.aday.abook.feature.memo.BookMemoViewModel
+import com.aday.abook.feature.pwd.PwdViewModel
 import com.aday.abook.feature.search.BookSearchViewModel
 import com.aday.abook.feature.setting.SettingComponent
 import dagger.Binds
@@ -36,5 +37,10 @@ abstract class ViewModelModule{
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     internal abstract fun mainViewMdel(viewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PwdViewModel::class)
+    internal abstract fun pwdViewModel(viewModel: PwdViewModel): ViewModel
 
 }
