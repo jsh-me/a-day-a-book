@@ -99,6 +99,9 @@ dependencies {
     //segmented control
     implementation 'com.github.creageek:segmented:1.0.0'
 
+    //edittext-pin
+    implementation 'com.poovam:pin-edittext-field:1.2.3'
+
     //db debug
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 
